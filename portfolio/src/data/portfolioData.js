@@ -63,9 +63,9 @@ export const portfolioData = {
   socialLinks: [
     {
       name: "GitHub",
-      url: "https://github.com/",
+      url: "https://github.com/Ashishroycodes",
       icon: "Github",
-      username: "@ashishroy",
+      username: "@Ashishroycodes",
     },
     {
       name: "LinkedIn",
@@ -171,6 +171,39 @@ export const portfolioData = {
 
   // Featured Projects
   projects: [
+    {
+      id: "weathergpt",
+      title: "WeatherGPT – Conversational Weather Intelligence Platform",
+      category: "ai",
+      categoryLabel: "AI & Meteorological GIS",
+      featured: true,
+      summary:
+        "Smart India Hackathon (SIH) prototype featuring conversational weather intelligence, GIS Doppler radar tracking, CAP v1.2 disaster alerts, and multilingual voice interaction.",
+      description:
+        "WeatherGPT is an intelligent conversational meteorological intelligence and GIS decision support platform designed as a Smart India Hackathon (SIH) prototype. It empowers farmers, aviation pilots, maritime operators, and emergency responders with real-time weather analytics, Numerical Weather Prediction (NWP GFS vs. WRF 3km Meso comparisons), CAP v1.2 compliant squall and thunderstorm emergency alerts, and a multilingual voice-enabled AI assistant supporting English and 5 regional Indian languages (Hindi, Bengali, Tamil, Telugu, Marathi).",
+      image: "/weathergpt.jpg",
+      technologies: [
+        "FastAPI",
+        "Python 3.13",
+        "Vite",
+        "JavaScript",
+        "Leaflet GIS",
+        "Three.js",
+        "WebSockets",
+        "Open-Meteo API",
+        "Docker",
+      ],
+      demoUrl: "https://weathergpt-ai-weather-advisor.vercel.app",
+      githubUrl: "https://github.com/Ashishroycodes/weathergpt-ai-weather-advisor",
+      highlights: [
+        "Conversational AI assistant with intent classification, context cards, and multi-turn meteorological reasoning",
+        "Dual Numerical Weather Prediction (GFS 0.25° vs WRF 3km) isobaric comparisons and CAPE atmospheric stability indices",
+        "CAP v1.2 compliant extreme weather alerts with audio squall sirens and geolocation dispatch",
+        "Multilingual voice interaction using Web Speech API (STT & TTS) supporting 6 Indian languages",
+        "Sector decision modules for Agriculture (Kisan advisories), Aviation (METAR/TAF), and Marine (INCOIS)",
+        "Procedural atmospheric particle canvas rendering 7 dynamic weather themes synced in real-time",
+      ],
+    },
     {
       id: "cloudpulse",
       title: "CloudPulse – Infrastructure Observability Hub",
