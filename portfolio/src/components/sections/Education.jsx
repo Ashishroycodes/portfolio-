@@ -68,17 +68,22 @@ export default function Education() {
     }
   };
 
-  // Scroll to a specific card index
-  const scrollToCard = (index) => {
+  // Scroll to a specific card index horizontally within the card deck container
+  const scrollToCard = (index, smooth = true) => {
     const el = scrollDeckRef.current;
     if (!el) return;
     const cards = el.querySelectorAll('.scroll-deck-card-wrap');
     if (cards[index]) {
-      cards[index].scrollIntoView({
-        behavior: 'smooth',
-        inline: 'center',
-        block: 'nearest',
-      });
+      const card = cards[index];
+      const cardRect = card.getBoundingClientRect();
+      const containerRect = el.getBoundingClientRect();
+      if (containerRect.width > 0) {
+        const targetScroll = el.scrollLeft + (cardRect.left - containerRect.left) - (containerRect.width - cardRect.width) / 2;
+        el.scrollTo({
+          left: Math.max(0, targetScroll),
+          behavior: smooth ? 'smooth' : 'auto',
+        });
+      }
       setActiveIndex(index);
     }
   };
@@ -102,13 +107,13 @@ export default function Education() {
     isDragging.current = false;
   };
 
-  // On mount, scroll to the current University card (last milestone)
+  // On mount or tab change, horizontally position the card deck to the current University card without scrolling the page window
   useEffect(() => {
     const timer = setTimeout(() => {
-      scrollToCard(filteredStages.length - 1);
-    }, 450);
+      scrollToCard(filteredStages.length - 1, false);
+    }, 200);
     return () => clearTimeout(timer);
-  }, [activeTab]);
+  }, [activeTab, filteredStages.length]);
 
   const getStageIcon = (item, size = 20) => {
     if (item.isCurrent) return <GraduationCap size={size} />;

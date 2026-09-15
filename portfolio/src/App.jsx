@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
 import Hero from './components/sections/Hero';
@@ -11,6 +11,17 @@ import Education from './components/sections/Education';
 import Contact from './components/sections/Contact';
 
 function App() {
+  useEffect(() => {
+    // Disable automatic browser scroll restoration on refresh so page always loads from top
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    // If no specific hash link was clicked/entered, smoothly ensure viewport is at top
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+  }, []);
+
   return (
     <div className="app-wrapper">
       {/* Dynamic Ambient Glow Background */}
