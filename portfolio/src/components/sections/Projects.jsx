@@ -20,6 +20,9 @@ export default function Projects() {
 
   const filteredProjects = portfolioData.projects.filter((project) => {
     if (filter === 'all') return true;
+    if (Array.isArray(project.category)) {
+      return project.category.includes(filter);
+    }
     return project.category === filter;
   });
 
@@ -69,6 +72,10 @@ export default function Projects() {
                   alt={project.title}
                   className="project-image"
                   loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80';
+                  }}
                 />
                 <div className="project-image-overlay">
                   <button
@@ -163,6 +170,10 @@ export default function Projects() {
                 src={selectedProject.image}
                 alt={selectedProject.title}
                 className="modal-project-img"
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80';
+                }}
               />
             </div>
 

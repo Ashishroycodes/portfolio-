@@ -172,9 +172,42 @@ export const portfolioData = {
   // Featured Projects
   projects: [
     {
+      id: "speakup-ai",
+      title: "SpeakUp AI – AI-Powered Communication & Interview Intelligence Platform",
+      category: ["ai", "fullstack"],
+      categoryLabel: "AI & Speech Intelligence",
+      featured: true,
+      summary:
+        "AI-driven communication coach and mock interview simulator featuring real-time speech recognition, fluency & vocabulary scoring, multi-turn AI roleplay, and adaptive learning roadmaps.",
+      description:
+        "SpeakUp AI is a full-stack personal communication coach and interview preparation ecosystem engineered for students and early-career software developers. It bridges the gap between technical competency and expressive presentation with AI-driven mock interviews (Technical, HR, and Behavioral), browser-native speech recognition (STT) and voice synthesis (TTS), interactive vocabulary builders with spaced repetition, situational roleplays, and polymorphic daily improvement analytics. Backed by configurable LLM providers (Google Gemini, Groq, OpenAI), robust JWT user session management, and SQLite/MySQL persistence.",
+      image: "/speakup.jpg",
+      technologies: [
+        "React 19",
+        "Node.js",
+        "Vite",
+        "Google Gemini API",
+        "Web Speech API",
+        "REST APIs",
+        "MySQL / SQLite",
+        "JWT Auth",
+        "Vercel",
+      ],
+      demoUrl: "https://speakup-ai-psi.vercel.app/",
+      githubUrl: "https://github.com/Ashishroycodes/speakup_ai",
+      highlights: [
+        "Full-cycle AI Interview Simulator covering Technical, HR, and Behavioral questions with real-time audio transcripts and timers",
+        "Structured competency scoring reports evaluating fluency, vocabulary precision, and multi-day polymorphic improvement plans",
+        "Interactive AI Communication Coach supporting conversational practice, voice interaction, and contextual response suggestions",
+        "Gamified Vocabulary Studio spanning Beginner to Advanced, Interview jargon, and Gen-Z terminology with spaced repetition quizzes",
+        "Interactive Roleplay Studio & Daily Challenges with XP progress tracking, streak milestones, and educator dashboard preview mode",
+        "Production-grade architecture with React 19, native Node.js REST backend, JWT auth, and dual SQLite/MySQL persistent storage",
+      ],
+    },
+    {
       id: "weathergpt",
       title: "WeatherGPT – Conversational Weather Intelligence Platform",
-      category: "ai",
+      category: ["ai", "fullstack"],
       categoryLabel: "AI & Meteorological GIS",
       featured: true,
       summary:
@@ -244,27 +277,6 @@ export const portfolioData = {
         "Achieved 99/100 Google Lighthouse score with zero render blocking",
         "Optimistic UI updates for zero-lag cart management",
         "Fully accessible navigation and keyboard shortcut support",
-      ],
-    },
-    {
-      id: "aura-ai",
-      title: "AuraAI – Context-Aware Knowledge Engine",
-      category: "ai",
-      categoryLabel: "AI & Vector Search",
-      featured: true,
-      summary:
-        "Semantic document intelligence engine utilizing vector embeddings and LLM streaming for rapid enterprise knowledge retrieval.",
-      description:
-        "AuraAI ingests large PDF, markdown, and code repositories, indexes them with Pinecone vector databases, and provides contextual answers with precise source citations. Includes streaming chat interface and history management.",
-      image:
-        "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=900&q=80",
-      technologies: ["Python", "FastAPI", "React", "OpenAI API", "Pinecone"],
-      demoUrl: "https://aura-ai.example.com",
-      githubUrl: "https://github.com/example/aura-ai",
-      highlights: [
-        "Retrieval-Augmented Generation (RAG) pipeline with hybrid keyword + semantic search",
-        "Sub-second chunk tokenization and vector indexing",
-        "Export chat transcripts directly to Markdown notes",
       ],
     },
     {
@@ -348,6 +360,22 @@ export const portfolioData = {
 
   // Relevant Certificates
   certificates: [
+    {
+      id: "cert-deloitte-analytics",
+      title: "Data Analytics Job Simulation",
+      issuer: "Deloitte",
+      issuerBadge: "Deloitte",
+      iconColor: "#86bc25",
+      issueDate: "August 2026",
+      expiryDate: "Lifetime Credential",
+      credentialId: "6a870d7a9c1de56b669f6467",
+      credentialUrl: "/certificates/deloitte-data-analytics.jpg",
+      image: "/certificates/deloitte-data-analytics.jpg",
+      category: "Data Analytics",
+      skills: ["Data Analysis", "Forensic Technology", "Analytical Thinking", "Data Interpretation"],
+      description:
+        "Practical job simulation completed with Deloitte via Forage, demonstrating practical tasks in Data Analysis and Forensic Technology (User Verification Code: 68b942cf303929516ee6f0d9).",
+    },
     {
       id: "cert-generative-ai",
       title: "What Is Generative AI?",
