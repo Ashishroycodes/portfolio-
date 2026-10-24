@@ -36,8 +36,12 @@ export const portfolioData = {
     photoUrl: "/profile.jpg",
     location: "Jaipur, India",
     email: "ashishroybr9@gmail.com",
+    githubUrl: "https://github.com/Ashishroycodes",
+    linkedinUrl: "https://linkedin.com/in/ashish-roy111/",
+    portfolioUrl: "https://portfolio-green-phi-wgbvlpt5uc.vercel.app/",
     openToWork: true,
     resumeUrl: "#resume",
+    resumePdf: "/resume.pdf",
     currentStatus: "3rd Year B.Tech CSE",
   },
 
@@ -62,16 +66,22 @@ export const portfolioData = {
   // Social Links
   socialLinks: [
     {
+      name: "LinkedIn",
+      url: "https://linkedin.com/in/ashish-roy111/",
+      icon: "Linkedin",
+      username: "ashish-roy111",
+    },
+    {
       name: "GitHub",
       url: "https://github.com/Ashishroycodes",
       icon: "Github",
       username: "@Ashishroycodes",
     },
     {
-      name: "LinkedIn",
-      url: "https://www.linkedin.com/feed/",
-      icon: "Linkedin",
-      username: "LinkedIn Profile",
+      name: "Portfolio",
+      url: "https://portfolio-green-phi-wgbvlpt5uc.vercel.app/",
+      icon: "Portfolio",
+      username: "Live Portfolio",
     },
     {
       name: "Instagram",
@@ -173,7 +183,7 @@ export const portfolioData = {
   projects: [
     {
       id: "speakup-ai",
-      title: "SpeakUp AI – AI-Powered Communication & Interview Intelligence Platform",
+      title: "SpeakUp AI – Communication & Interview Practice App",
       category: ["ai", "fullstack"],
       categoryLabel: "AI & Speech Intelligence",
       featured: true,
@@ -206,7 +216,7 @@ export const portfolioData = {
     },
     {
       id: "weathergpt",
-      title: "WeatherGPT – Conversational Weather Intelligence Platform",
+      title: "WeatherGPT – AI Weather Advisor",
       category: ["ai", "fullstack"],
       categoryLabel: "AI & Meteorological GIS",
       featured: true,
@@ -226,7 +236,7 @@ export const portfolioData = {
         "Open-Meteo API",
         "Docker",
       ],
-      demoUrl: "https://weathergpt-ai-weather-advisor.vercel.app",
+      demoUrl: "https://weathergpt-ai-weather-advisor.vercel.app/",
       githubUrl: "https://github.com/Ashishroycodes/weathergpt-ai-weather-advisor",
       highlights: [
         "Conversational AI assistant with intent classification, context cards, and multi-turn meteorological reasoning",

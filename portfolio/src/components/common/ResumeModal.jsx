@@ -20,13 +20,33 @@ export default function ResumeModal({ isOpen, onClose }) {
             <span className="ctrl-badge">Ashish Roy — Curriculum Vitae</span>
           </div>
           <div className="resume-ctrl-actions">
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-secondary btn-sm resume-action-btn"
+              title="Open Resume PDF in New Tab"
+            >
+              <ExternalLink size={14} />
+              <span>View PDF</span>
+            </a>
+            <a
+              href="/resume.pdf"
+              download="Ashish_Kumar_Resume.pdf"
+              className="btn btn-primary btn-sm resume-action-btn"
+              title="Download Resume PDF directly"
+            >
+              <Download size={14} />
+              <span>Download PDF</span>
+            </a>
             <button
               type="button"
-              className="btn btn-primary btn-sm resume-action-btn"
+              className="btn btn-secondary btn-sm resume-action-btn"
               onClick={handlePrint}
+              title="Print Resume"
             >
-              <Printer size={15} />
-              <span>Print / Save as PDF</span>
+              <Printer size={14} />
+              <span>Print</span>
             </button>
             <button
               type="button"
@@ -60,12 +80,16 @@ export default function ResumeModal({ isOpen, onClose }) {
               </div>
               <div className="resume-contact-line">
                 <ExternalLink size={13} />
-                <a href="https://www.linkedin.com/feed/" target="_blank" rel="noopener noreferrer">
+                <a href="https://linkedin.com/in/ashish-roy111/" target="_blank" rel="noopener noreferrer">
                   LinkedIn
                 </a>
                 <span>•</span>
-                <a href="https://github.com/" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/Ashishroycodes" target="_blank" rel="noopener noreferrer">
                   GitHub
+                </a>
+                <span>•</span>
+                <a href="https://portfolio-green-phi-wgbvlpt5uc.vercel.app/" target="_blank" rel="noopener noreferrer">
+                  Portfolio
                 </a>
               </div>
             </div>

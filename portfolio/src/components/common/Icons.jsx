@@ -77,7 +77,7 @@ export function FacebookIcon({ size = 18, className = '' }) {
   );
 }
 
-export function TwitterIcon({ size = 18, className = '' }) {
+export function GlobeIcon({ size = 18, className = '' }) {
   return (
     <svg
       width={size}
@@ -90,7 +90,10 @@ export function TwitterIcon({ size = 18, className = '' }) {
       strokeLinejoin="round"
       className={className}
     >
-      <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+      <circle cx="12" cy="12" r="10" />
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+      <path d="M2 12h20" />
     </svg>
   );
 }
+

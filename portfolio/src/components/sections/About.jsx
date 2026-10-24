@@ -1,5 +1,21 @@
 import React, { useState } from 'react';
-import { User, FileText, CheckCircle2, Sparkles, Code, Cpu, Brain, Rocket } from 'lucide-react';
+import {
+  User,
+  FileText,
+  Download,
+  ExternalLink,
+  Eye,
+  CheckCircle2,
+  Sparkles,
+  Code,
+  Cpu,
+  Brain,
+  Rocket,
+  Maximize2,
+  ChevronDown,
+  ChevronUp,
+  X,
+} from 'lucide-react';
 import { portfolioData } from '../../data/portfolioData';
 import { useIntersection } from '../../hooks/useIntersection';
 import TiltCard from '../common/TiltCard';
@@ -9,12 +25,28 @@ export default function About() {
   const { personal } = portfolioData;
   const [ref, isVisible] = useIntersection();
   const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const [showResumeViewer, setShowResumeViewer] = useState(false);
+
+  const handleToggleResume = () => {
+    setShowResumeViewer((prev) => {
+      const nextState = !prev;
+      if (nextState) {
+        setTimeout(() => {
+          const el = document.getElementById('about-resume-viewer');
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 120);
+      }
+      return nextState;
+    });
+  };
 
   const highlightIcons = [
-    <Brain size={18} className="gold-icon" />,
-    <Code size={18} className="gold-icon" />,
-    <Cpu size={18} className="gold-icon" />,
-    <Rocket size={18} className="gold-icon" />,
+    <Brain key="brain" size={18} className="gold-icon" />,
+    <Code key="code" size={18} className="gold-icon" />,
+    <Cpu key="cpu" size={18} className="gold-icon" />,
+    <Rocket key="rocket" size={18} className="gold-icon" />,
   ];
 
   return (
@@ -30,7 +62,7 @@ export default function About() {
             Passionate About <span className="gold-text">Engineering & Innovation</span>
           </h2>
           <p className="section-subtitle">
-            A glimpse into my mindset, academic focus, and developer journey.
+            A glimpse into my mindset, academic focus, developer journey, and verified curriculum vitae.
           </p>
         </div>
 
@@ -81,22 +113,138 @@ export default function About() {
               ))}
             </div>
 
-            {/* Download CV Button */}
+            {/* Resume CTA Row */}
             <div className="about-cta-row">
               <button
                 type="button"
-                onClick={() => setIsResumeOpen(true)}
+                onClick={handleToggleResume}
                 className="btn btn-primary"
+                title={showResumeViewer ? 'Hide resume document' : 'View resume document'}
+                aria-label={showResumeViewer ? 'Hide Resume' : 'View Resume'}
+                aria-expanded={showResumeViewer}
               >
-                <FileText size={16} />
-                <span>View & Print CV</span>
+                <Eye size={16} />
+                <span>{showResumeViewer ? 'Hide Resume' : 'View Resume'}</span>
+                {showResumeViewer ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
               </button>
-              <a href="#experience" className="btn btn-secondary">
-                <span>View Learning Journey</span>
+
+              <a
+                href="/resume.pdf"
+                download="Ashish_Kumar_Resume.pdf"
+                className="btn btn-secondary"
+                title="Download resume PDF directly to your device"
+                aria-label="Download Resume PDF directly"
+              >
+                <Download size={16} />
+                <span>Download Resume</span>
+              </a>
+
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-secondary"
+                title="Open verified resume PDF in a new browser tab"
+                aria-label="Open Resume in new browser tab"
+              >
+                <ExternalLink size={15} />
+                <span>Open in Tab</span>
               </a>
             </div>
           </div>
         </div>
+
+        {/* Integrated Resume PDF Viewer - Displayed only when user clicks button */}
+        {showResumeViewer && (
+          <div id="about-resume-viewer" className="about-resume-box glass-card">
+            <div className="about-resume-header">
+              <div className="about-resume-meta">
+                <span className="about-doc-pill">Curriculum Vitae</span>
+                <h4 className="about-doc-title">Ashish Kumar — Verified Resume</h4>
+              </div>
+              <div className="about-resume-header-actions">
+                <a
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="about-view-btn"
+                  title="Open full page PDF in new tab"
+                  aria-label="Open PDF in new tab"
+                >
+                  <Maximize2 size={14} />
+                  <span>Open Full Page</span>
+                </a>
+                <a
+                  href="/resume.pdf"
+                  download="Ashish_Kumar_Resume.pdf"
+                  className="about-view-btn gold"
+                  title="Download PDF"
+                  aria-label="Download PDF"
+                >
+                  <Download size={14} />
+                  <span>Download PDF</span>
+                </a>
+                <button
+                  type="button"
+                  onClick={() => setShowResumeViewer(false)}
+                  className="about-view-btn close-btn"
+                  title="Close resume preview"
+                  aria-label="Close resume preview"
+                >
+                  <X size={14} />
+                  <span>Close</span>
+                </button>
+              </div>
+            </div>
+
+            <div className="about-resume-frame">
+              <object
+                data="/resume.pdf#toolbar=1&navpanes=0&scrollbar=1"
+                type="application/pdf"
+                className="about-resume-object"
+                aria-label="Ashish Kumar Resume PDF"
+              >
+                <iframe
+                  src="/resume.pdf#toolbar=1&navpanes=0"
+                  title="Ashish Kumar Resume Document"
+                  className="about-resume-object"
+                >
+                  <div className="about-resume-fallback">
+                    <FileText size={40} className="gold-icon" />
+                    <h4>Ashish Kumar — Curriculum Vitae</h4>
+                    <p>Your browser doesn't support embedded PDFs directly.</p>
+                    <div className="fallback-links">
+                      <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm">
+                        <Eye size={14} />
+                        <span>View Resume PDF</span>
+                      </a>
+                      <a href="/resume.pdf" download="Ashish_Kumar_Resume.pdf" className="btn btn-secondary btn-sm">
+                        <Download size={14} />
+                        <span>Download Resume</span>
+                      </a>
+                    </div>
+                  </div>
+                </iframe>
+              </object>
+            </div>
+
+            <div className="about-resume-footer">
+              <div className="about-resume-status">
+                <CheckCircle2 size={13} className="text-emerald" />
+                <span>Verified Recruiter Copy • Stored in public/resume.pdf</span>
+              </div>
+              <a
+                href="/resume.pdf"
+                download="Ashish_Kumar_Resume.pdf"
+                className="about-resume-footer-dl"
+                title="Direct Download"
+              >
+                <Download size={13} />
+                <span>Save to Device</span>
+              </a>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Interactive Resume Modal with Print / Save PDF */}
@@ -257,9 +405,160 @@ export default function About() {
         .about-cta-row {
           display: flex;
           align-items: center;
-          gap: 16px;
+          gap: 14px;
           margin-top: 10px;
           flex-wrap: wrap;
+        }
+
+        /* Inline Resume Viewer Box inside About */
+        .about-resume-box {
+          margin-top: 40px;
+          border-radius: var(--radius-lg);
+          border: 1px solid var(--border-gold);
+          overflow: hidden;
+          background: rgba(15, 15, 18, 0.85);
+          box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(212, 175, 55, 0.15);
+          animation: resumeSlideDown 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes resumeSlideDown {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .about-resume-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 14px 24px;
+          background: rgba(18, 20, 28, 0.95);
+          border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+          gap: 16px;
+          flex-wrap: wrap;
+        }
+        .about-resume-meta {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+        .about-doc-pill {
+          padding: 3px 10px;
+          border-radius: var(--radius-full);
+          background: rgba(212, 175, 55, 0.15);
+          color: var(--accent-gold);
+          font-size: 0.72rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
+        .about-doc-title {
+          font-size: 0.92rem;
+          font-weight: 700;
+          color: var(--text-primary);
+          margin: 0;
+        }
+        .about-resume-header-actions {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        .about-view-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 0.8rem;
+          font-weight: 600;
+          color: var(--text-secondary);
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid var(--border-subtle);
+          padding: 6px 14px;
+          border-radius: var(--radius-sm);
+          text-decoration: none;
+          cursor: pointer;
+          transition: all var(--transition-fast);
+        }
+        .about-view-btn:hover {
+          background: rgba(212, 175, 55, 0.12);
+          color: var(--accent-gold);
+          border-color: var(--border-gold);
+          transform: translateY(-1px);
+        }
+        .about-view-btn.gold {
+          color: var(--accent-gold);
+          border-color: rgba(212, 175, 55, 0.3);
+        }
+        .about-view-btn.close-btn:hover {
+          background: rgba(239, 68, 68, 0.15);
+          color: #ef4444;
+          border-color: rgba(239, 68, 68, 0.4);
+        }
+        .about-resume-frame {
+          width: 100%;
+          height: 820px;
+          background: #11141c;
+          position: relative;
+        }
+        .about-resume-object {
+          width: 100%;
+          height: 100%;
+          border: none;
+          display: block;
+        }
+        .about-resume-fallback {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          padding: 40px 20px;
+          text-align: center;
+        }
+        .about-resume-fallback h4 {
+          margin: 12px 0 6px 0;
+          color: var(--text-primary);
+        }
+        .about-resume-fallback p {
+          color: var(--text-secondary);
+          margin-bottom: 20px;
+          font-size: 0.9rem;
+        }
+        .fallback-links {
+          display: flex;
+          gap: 12px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .about-resume-footer {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 10px 24px;
+          background: rgba(18, 20, 28, 0.95);
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
+          font-size: 0.8rem;
+          color: var(--text-secondary);
+        }
+        .about-resume-status {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+        }
+        .about-resume-footer-dl {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          color: var(--accent-gold);
+          font-weight: 600;
+          text-decoration: none;
+          transition: color var(--transition-fast);
+        }
+        .about-resume-footer-dl:hover {
+          color: var(--accent-gold-light);
+          text-decoration: underline;
         }
 
         @media (max-width: 992px) {
@@ -270,6 +569,16 @@ export default function About() {
           }
           .about-highlights-grid {
             grid-template-columns: 1fr;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .about-resume-frame {
+            height: 520px;
+          }
+          .about-resume-header {
+            flex-direction: column;
+            align-items: flex-start;
           }
         }
       `}</style>

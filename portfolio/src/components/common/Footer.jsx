@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowUp, Mail } from 'lucide-react';
-import { GithubIcon, LinkedinIcon, TwitterIcon, InstagramIcon, FacebookIcon } from './Icons';
+import { GithubIcon, LinkedinIcon, GlobeIcon, InstagramIcon, FacebookIcon } from './Icons';
 import { portfolioData } from '../../data/portfolioData';
 
 export default function Footer() {
@@ -14,14 +14,16 @@ export default function Footer() {
         return <GithubIcon size={18} />;
       case 'linkedin':
         return <LinkedinIcon size={18} />;
+      case 'portfolio':
+      case 'globe':
+      case 'website':
+        return <GlobeIcon size={18} />;
       case 'instagram':
       case 'insta':
         return <InstagramIcon size={18} />;
       case 'facebook':
       case 'fb':
         return <FacebookIcon size={18} />;
-      case 'twitter':
-        return <TwitterIcon size={18} />;
       case 'email':
       case 'mail':
         return <Mail size={18} />;

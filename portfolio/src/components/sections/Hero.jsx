@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowRight, Sparkles, Mail, Send, Eye, GraduationCap, Code2, Layers } from 'lucide-react';
-import { GithubIcon, LinkedinIcon, InstagramIcon, FacebookIcon } from '../common/Icons';
+import { GithubIcon, LinkedinIcon, GlobeIcon, InstagramIcon, FacebookIcon } from '../common/Icons';
 import { portfolioData } from '../../data/portfolioData';
 import InteractiveAvatar from '../common/InteractiveAvatar';
 import MorphingName from '../common/MorphingName';
@@ -88,7 +88,7 @@ export default function Hero() {
             <span className="socials-label">Connect:</span>
             <div className="socials-list">
               <a
-                href="https://github.com/"
+                href={personal.githubUrl || "https://github.com/Ashishroycodes"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-circle-btn"
@@ -98,7 +98,7 @@ export default function Hero() {
                 <GithubIcon size={18} />
               </a>
               <a
-                href="https://www.linkedin.com/feed/"
+                href={personal.linkedinUrl || "https://linkedin.com/in/ashish-roy111/"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-circle-btn"
@@ -106,6 +106,16 @@ export default function Hero() {
                 aria-label="LinkedIn"
               >
                 <LinkedinIcon size={18} />
+              </a>
+              <a
+                href={personal.portfolioUrl || "https://portfolio-green-phi-wgbvlpt5uc.vercel.app/"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-circle-btn"
+                title="Live Portfolio"
+                aria-label="Live Portfolio"
+              >
+                <GlobeIcon size={18} />
               </a>
               <a
                 href="https://instagram.com/"

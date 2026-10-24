@@ -119,35 +119,40 @@ export default function Projects() {
 
                 {/* Actions Footer */}
                 <div className="project-card-footer">
-                  <button
-                    onClick={() => setSelectedProject(project)}
-                    className="btn-link details-link"
-                  >
-                    <span>Inspect System</span>
-                    <ArrowRight size={14} />
-                  </button>
-
-                  <div className="project-links">
+                  <div className="project-btn-row">
                     <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="icon-link"
-                      aria-label="GitHub Repository"
-                      title="View Source on GitHub"
+                      className="btn btn-secondary btn-sm project-action-btn"
+                      aria-label={`View GitHub Repository for ${project.title}`}
+                      title="View GitHub Repository"
                     >
-                      <GithubIcon size={18} />
+                      <GithubIcon size={14} />
+                      <span>View GitHub Repository</span>
                     </a>
                     <a
                       href={project.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="icon-link"
-                      aria-label="Live Demo"
-                      title="View Live Demo"
+                      className="btn btn-primary btn-sm project-action-btn"
+                      aria-label={`Open Live Demo for ${project.title}`}
+                      title="Live Demo"
                     >
-                      <ExternalLink size={18} />
+                      <ExternalLink size={14} />
+                      <span>Live Demo</span>
                     </a>
+                  </div>
+
+                  <div className="project-extra-row">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedProject(project)}
+                      className="btn-link details-link"
+                    >
+                      <span>Inspect Overview</span>
+                      <ArrowRight size={13} />
+                    </button>
                   </div>
                 </div>
               </div>
@@ -200,22 +205,24 @@ export default function Projects() {
 
             <div className="modal-action-row">
               <a
-                href={selectedProject.demoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-primary"
-              >
-                <span>Launch Live Application</span>
-                <ExternalLink size={15} />
-              </a>
-              <a
                 href={selectedProject.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-secondary"
+                aria-label={`View GitHub Repository for ${selectedProject.title}`}
               >
                 <GithubIcon size={16} />
-                <span>View Source Code</span>
+                <span>View GitHub Repository</span>
+              </a>
+              <a
+                href={selectedProject.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+                aria-label={`Open Live Demo for ${selectedProject.title}`}
+              >
+                <ExternalLink size={15} />
+                <span>Live Demo</span>
               </a>
             </div>
           </div>
@@ -374,45 +381,62 @@ export default function Projects() {
         }
         .project-card-footer {
           display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding-top: 16px;
+          flex-direction: column;
+          gap: 12px;
+          padding-top: 18px;
           border-top: 1px solid var(--border-subtle);
+          margin-top: auto;
+        }
+        .project-btn-row {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 8px;
+          width: 100%;
+        }
+        .project-action-btn {
+          width: 100%;
+          padding: 8px 10px;
+          font-size: 0.8rem;
+          font-weight: 600;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          text-align: center;
+          text-decoration: none;
+        }
+        .project-action-btn span {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .project-extra-row {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
         }
         .details-link {
           display: inline-flex;
           align-items: center;
           gap: 6px;
-          font-size: 0.88rem;
+          font-size: 0.82rem;
           font-weight: 600;
-          color: var(--accent-cyan);
+          color: var(--text-secondary);
+          background: none;
+          border: none;
+          cursor: pointer;
           transition: gap var(--transition-fast), color var(--transition-fast);
+          padding: 0;
         }
         .details-link:hover {
-          gap: 10px;
-          color: var(--accent-primary);
+          gap: 9px;
+          color: var(--accent-gold);
         }
-        .project-links {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-        }
-        .icon-link {
-          width: 34px;
-          height: 34px;
-          border-radius: var(--radius-sm);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: var(--bg-card);
-          border: 1px solid var(--border-card);
-          color: var(--text-secondary);
-          transition: all var(--transition-fast);
-        }
-        .icon-link:hover {
-          color: var(--text-primary);
-          border-color: var(--accent-primary);
-          transform: translateY(-2px);
+
+        @media (max-width: 440px) {
+          .project-btn-row {
+            grid-template-columns: 1fr;
+          }
         }
 
         /* Modal Specific Styling */

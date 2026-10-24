@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, MapPin, Send, Copy, Check, Sparkles, MessageSquare, ExternalLink } from 'lucide-react';
-import { LinkedinIcon } from '../common/Icons';
+import { LinkedinIcon, GithubIcon, GlobeIcon } from '../common/Icons';
 import confetti from 'canvas-confetti';
 import { portfolioData } from '../../data/portfolioData';
 import Toast from '../common/Toast';
@@ -137,7 +137,7 @@ export default function Contact() {
 
                 {/* LinkedIn Channel */}
                 <a
-                  href="https://www.linkedin.com/feed/"
+                  href={personal.linkedinUrl || "https://linkedin.com/in/ashish-roy111/"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="method-item"
@@ -152,6 +152,48 @@ export default function Contact() {
                     <span className="method-value">LinkedIn Profile</span>
                   </div>
                   <div className="copy-btn" title="Open LinkedIn Profile">
+                    <ExternalLink size={14} />
+                  </div>
+                </a>
+
+                {/* GitHub Channel */}
+                <a
+                  href={personal.githubUrl || "https://github.com/Ashishroycodes"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="method-item"
+                  title="Open GitHub Profile"
+                  style={{ textDecoration: 'none' }}
+                >
+                  <div className="method-icon-box" style={{ background: 'rgba(255, 255, 255, 0.08)', color: '#ffffff' }}>
+                    <GithubIcon size={18} />
+                  </div>
+                  <div className="method-details">
+                    <span className="method-label">Code Repositories</span>
+                    <span className="method-value">GitHub / Ashishroycodes</span>
+                  </div>
+                  <div className="copy-btn" title="Open GitHub Profile">
+                    <ExternalLink size={14} />
+                  </div>
+                </a>
+
+                {/* Portfolio Channel */}
+                <a
+                  href={personal.portfolioUrl || "https://portfolio-green-phi-wgbvlpt5uc.vercel.app/"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="method-item"
+                  title="Open Live Portfolio"
+                  style={{ textDecoration: 'none' }}
+                >
+                  <div className="method-icon-box" style={{ background: 'rgba(212, 175, 55, 0.15)', color: '#d4af37' }}>
+                    <GlobeIcon size={18} />
+                  </div>
+                  <div className="method-details">
+                    <span className="method-label">Portfolio Site</span>
+                    <span className="method-value">Live Vercel Deployment</span>
+                  </div>
+                  <div className="copy-btn" title="Open Live Portfolio">
                     <ExternalLink size={14} />
                   </div>
                 </a>
